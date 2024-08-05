@@ -1,5 +1,5 @@
 export const routes = [
-  { path: '/', redirect: '/tables' },
+  { path: '/', redirect: '/expiry-warning' },
   {
     path: '/',
     component: () => import('@/layouts/default.vue'),
@@ -25,8 +25,8 @@ export const routes = [
         component: () => import('@/pages/cards.vue'),
       },
       {
-        path: 'tables',
-        component: () => import('@/pages/tables.vue'),
+        path: 'expiry-warning',
+        component: () => import('@/pages/expiry-warning.vue'),
       },
       {
         path: 'inventory-warning',
