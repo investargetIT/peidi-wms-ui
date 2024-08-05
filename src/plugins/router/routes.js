@@ -25,8 +25,8 @@ export const routes = [
         component: () => import('@/pages/cards.vue'),
       },
       {
-        path: 'expiry-warning',
-        component: () => import('@/pages/expiry-warning.vue'),
+        path: 'tables',
+        component: () => import('@/pages/tables.vue'),
       },
       {
         path: 'inventory-warning',

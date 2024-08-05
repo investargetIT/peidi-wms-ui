@@ -24,7 +24,7 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue'
     :item="{
       title: '库存报警',
       icon: 'ri-table-alt-line',
-      to: '/inventory-waring',
+      to: '/inventory-warning',
     }"
   />
 </template>
