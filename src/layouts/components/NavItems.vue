@@ -1,17 +1,15 @@
 <script setup>
-import VerticalNavSectionTitle from '@/@layouts/components/VerticalNavSectionTitle.vue'
-import VerticalNavGroup from '@layouts/components/VerticalNavGroup.vue'
-import VerticalNavLink from '@layouts/components/VerticalNavLink.vue'
+import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
 </script>
 
 <template>
 
   <!-- 👉 Forms & Tables -->
-  <VerticalNavSectionTitle
+  <!-- <VerticalNavSectionTitle
     :item="{
       heading: '配置信息',
     }"
-  />
+  /> -->
   <VerticalNavLink
     :item="{
       title: '有效期预警',
@@ -20,7 +18,7 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue'
     }"
   />
 
-    <VerticalNavLink
+  <VerticalNavLink
     :item="{
       title: '库存报警',
       icon: 'ri-table-alt-line',
