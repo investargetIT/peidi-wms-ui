@@ -1,12 +1,12 @@
 <script setup>
-import InventoryWaring from '@/views/pages/tables/InventoryWaring.vue'
+import InventoryWarning from '@/views/pages/tables/InventoryWarning.vue'
 </script>
 
 <template>
   <VRow>
     <VCol cols="12">
       <VCard title="库存预警">
-        <InventoryWaring />
+        <InventoryWarning />
       </VCard>
     </VCol>
   </VRow>

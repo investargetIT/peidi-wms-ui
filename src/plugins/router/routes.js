@@ -29,8 +29,8 @@ export const routes = [
         component: () => import('@/pages/tables.vue'),
       },
       {
-        path: 'inventory-waring',
-        component: () => import('@/pages/inventory-waring.vue'),
+        path: 'inventory-warning',
+        component: () => import('@/pages/inventory-warning.vue'),
       },
       {
         path: 'form-layouts',

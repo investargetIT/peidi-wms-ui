@@ -71,8 +71,8 @@ const desserts = [
 
     <tbody>
       <tr
-        v-for="item in desserts"
-        :key="item.brandName"
+        v-for="item in inventorywarning"
+        :key="item.id"
       >
         <td>
           {{ item.brandName }}
