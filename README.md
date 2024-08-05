@@ -1,9 +1,13 @@
-1. 构建镜像
+1. 环境变量，修改`.env`值
+```
+cp .env.example .env
+```
+2. 构建镜像
 ```
 ./build.sh
 ```
-2. 运行容器
+3. 运行容器
 ```
 ./run.sh
 ```
-3. 访问 http://localhost:5173/
+4. 访问 http://localhost:5173/
