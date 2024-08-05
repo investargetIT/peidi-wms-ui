@@ -1,5 +1,5 @@
 export const routes = [
-  { path: '/', redirect: '/dashboard' },
+  { path: '/', redirect: '/tables' },
   {
     path: '/',
     component: () => import('@/layouts/default.vue'),
@@ -27,6 +27,10 @@ export const routes = [
       {
         path: 'tables',
         component: () => import('@/pages/tables.vue'),
+      },
+      {
+        path: 'test',
+        component: () => import('@/pages/test.vue'),
       },
       {
         path: 'form-layouts',

@@ -7,3 +7,4 @@ docker run -it --rm \
   -v /app/.pnpm-store \
   -p 5173:5173 \
   peidi-wms-ui
+
