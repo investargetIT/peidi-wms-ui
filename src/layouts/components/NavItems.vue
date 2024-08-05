@@ -16,7 +16,7 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue'
     :item="{
       title: '有效期预警',
       icon: 'ri-table-alt-line',
-      to: '/tables',
+      to: '/expiry-warning',
     }"
   />
 
