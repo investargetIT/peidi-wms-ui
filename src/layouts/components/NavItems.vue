@@ -49,9 +49,9 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue'
 
     <VerticalNavLink
     :item="{
-      title: '测试menu',
+      title: '库存报警',
       icon: 'ri-table-alt-line',
-      to: '/test',
+      to: '/inventory-waring',
     }"
   />
 </template>

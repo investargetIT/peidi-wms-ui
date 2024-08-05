@@ -29,8 +29,8 @@ export const routes = [
         component: () => import('@/pages/tables.vue'),
       },
       {
-        path: 'test',
-        component: () => import('@/pages/test.vue'),
+        path: 'inventory-waring',
+        component: () => import('@/pages/inventory-waring.vue'),
       },
       {
         path: 'form-layouts',
