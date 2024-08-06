@@ -62,19 +62,19 @@ export default {
           {{ item.brandName }}
         </td>
         <td class="text-center">
+          {{ item.specNo }}
+        </td>
+        <td class="text-center">
           {{ item.goodsName }}
+        </td>
+        <td class="text-center">
+          {{ item.specName }}
         </td>
         <td class="text-center">
           {{ item.groupType }}
         </td>
         <td class="text-center">
           {{ item.inventoryNum }}
-        </td>
-        <td class="text-center">
-          {{ item.specName }}
-        </td>
-        <td class="text-center">
-          {{ item.specNo }}
         </td>
         <td class="text-center">
           {{ item.turnoverDays }}
