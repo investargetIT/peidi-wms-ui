@@ -13,8 +13,11 @@ export default {
     console.log('base url', BASE_URL);
     axios.get(BASE_URL + 'inventory/inventory-waring')
       .then(response => {
+        const { code, data } = response.data;
+        if (code == 200) {
+          this.desserts = data;
+        }
         // 成功时的处理逻辑
-        this.desserts = response.data;
         console.log(this.desserts);
       })
       .catch(error => {
