@@ -64,7 +64,7 @@ export default {
           {{ item.specNName }}
         </td>
         <td class="text-center">
-          {{ item.goodsType }}
+          {{ item.groupType }}
         </td>
         <td class="text-center">
           {{ item.inventoryNum }}
