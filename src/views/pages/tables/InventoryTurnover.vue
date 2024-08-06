@@ -7,6 +7,13 @@ export default {
         return {
             desserts: [
             ],
+            tableData: [
+                { id: 10001, name: 'Test1', role: 'Develop', sex: 'Man', age: 28, address: 'test abc' },
+                { id: 10002, name: 'Test2', role: 'Test', sex: 'Women', age: 22, address: 'Guangzhou' },
+                { id: 10003, name: 'Test3', role: 'PM', sex: 'Man', age: 32, address: 'Shanghai' },
+                { id: 10004, name: 'Test4', role: 'Designer', sex: 'Women', age: 24, address: 'Shanghai' }
+            ],
+
         };
     },
     mounted() {
@@ -25,73 +32,16 @@ export default {
 };
 </script>
 
-<template>
-    <VTable density="compact">
-        <thead>
-            <tr>
-                <th class="text-uppercase">
-                    品牌
-                </th>
-                <th class="text-uppercase text-center">
-                    商品编码
-                </th>
-                <th class="text-uppercase text-center">
-                    货品名称
-                </th>
-                <th class="text-uppercase text-center">
-                    规格名称
-                </th>
-                <th class="text-uppercase text-center">
-                    分类
-                </th>
-                <th class="text-uppercase text-center">
-                    库存量
-                </th>
-                <th class="text-uppercase text-center">
-                    预警天数
-                </th>
-                <th class="text-uppercase text-center">
-                    预警状态
-                </th>
-            </tr>
-        </thead>
 
-        <tbody>
-            <tr v-for="item in desserts" :key="item.id">
-                <td class="text-center">
-                    {{ item.brandName }}
-                </td>
-                <td class="text-center">
-                    {{ item.specNo }}
-                </td>
-                <td class="text-center">
-                    {{ item.goodsName }}
-                </td>
-                <td class="text-center">
-                    {{ item.specName }}
-                </td>
-                <td class="text-center">
-                    {{ item.groupType }}
-                </td>
-                <td class="text-center">
-                    {{ item.inventoryNum }}
-                </td>
-                <td class="text-center">
-                    {{ item.turnoverDays }}
-                </td>
-                <td class="text-center">
-                    <div class="circle" :style="{ 'background': item.waringLevel }">
-                        <!-- {{ item.waringLevel }} -->
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </VTable>
+<template>
+    <div>
+        <vxe-table border show-overflow :edit-config="{ trigger: 'click', mode: 'cell' }" :data="tableData">
+            <vxe-column field="id" title="商家编码" :edit-render="{ name: 'input' }"></vxe-column>
+            <vxe-column field="name" title="货品名称" :edit-render="{ name: 'input' }"></vxe-column>
+            <vxe-column field="role" title="规格名称" :edit-render="{ name: 'input' }"></vxe-column>
+            <vxe-column field="sex" title="分类" :edit-render="{ name: 'input' }"></vxe-column>
+            <vxe-column field="age" title="备注" :edit-render="{ name: 'input' }"></vxe-column>
+            <vxe-column field="address" title="库存周转系数" :edit-render="{ name: 'input' }"></vxe-column>
+        </vxe-table>
+    </div>
 </template>
-<style lang="scss">
-.circle {
-    border-radius: 50%;
-    height: 20px;
-    width: 20px;
-}
-</style>
