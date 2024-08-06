@@ -63,6 +63,9 @@ importers:
       vuetify:
         specifier: 3.6.13
         version: 3.6.13(typescript@5.5.4)(vite-plugin-vuetify@2.0.3)(vue@3.4.34(typescript@5.5.4))
+      vxe-table:
+        specifier: ^4.6.18
+        version: 4.6.18(vue@3.4.34(typescript@5.5.4))
       webfontloader:
         specifier: ^1.6.28
         version: 1.6.28
@@ -1253,6 +1256,9 @@ packages:
 
   dom-serializer@2.0.0:
     resolution: {integrity: sha512-wIkAryiqt/nV5EQKqQpo3SToSOV9J0DnbJqwK7Wv/Trc92zIAYZ4FlMu+JPFW1DfGFt81ZTCGgDEabffXeLyJg==}
+
+  dom-zindex@1.0.4:
+    resolution: {integrity: sha512-PNk7u71TJ1C9Lwjjp5nNuQcVWuECFMmr9kZAwi2UbgWUM7jXdTCe4O4x5bhLUa07jpcZUVA5Du3ho7/FXzS9Ng==}
 
   domelementtype@2.3.0:
     resolution: {integrity: sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw==}
@@ -2960,6 +2966,11 @@ packages:
       webpack-plugin-vuetify:
         optional: true
 
+  vxe-table@4.6.18:
+    resolution: {integrity: sha512-CE3gMWH9eKMwPvs1qS/FS61DdcH5RwfDOu39pUTiMCEiunde/uuktWDNaT4TMhpkbid7yybA8JP4gsflAg/1cw==}
+    peerDependencies:
+      vue: ^3.2.28
+
   webfontloader@1.6.28:
     resolution: {integrity: sha512-Egb0oFEga6f+nSgasH3E0M405Pzn6y3/9tOVanv/DLfa1YBIgcv90L18YyWnvXkRbIM17v5Kv6IT2N6g1x5tvQ==}
 
@@ -2996,6 +3007,9 @@ packages:
   write-file-atomic@5.0.1:
     resolution: {integrity: sha512-+QU2zd6OTD8XWIJCbffaiQeH9U73qIqafo1x6V1snCWYGJf6cVE0cDR4D8xRzcEnfI21IFrUPzPGtcPf8AC+Rw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
+
+  xe-utils@3.5.29:
+    resolution: {integrity: sha512-9Ty3k/nHUptUzBZ/S+Z6umfpNWKU6ZFdGR2qHeynKRTjI/Tjd5ku/n6O1oKQCwtxQ3QzCl3NnD2LRy9SCTmnNw==}
 
   xml-name-validator@4.0.0:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
@@ -4268,6 +4282,8 @@ snapshots:
       domelementtype: 2.3.0
       domhandler: 5.0.3
       entities: 4.5.0
+
+  dom-zindex@1.0.4: {}
 
   domelementtype@2.3.0: {}
 
@@ -6217,6 +6233,12 @@ snapshots:
       typescript: 5.5.4
       vite-plugin-vuetify: 2.0.3(vite@5.3.5(@types/node@20.14.12)(sass@1.76.0))(vue@3.4.34(typescript@5.5.4))(vuetify@3.6.13)
 
+  vxe-table@4.6.18(vue@3.4.34(typescript@5.5.4)):
+    dependencies:
+      dom-zindex: 1.0.4
+      vue: 3.4.34(typescript@5.5.4)
+      xe-utils: 3.5.29
+
   webfontloader@1.6.28: {}
 
   webpack-sources@3.2.3: {}
@@ -6255,6 +6277,8 @@ snapshots:
     dependencies:
       imurmurhash: 0.1.4
       signal-exit: 4.1.0
+
+  xe-utils@3.5.29: {}
 
   xml-name-validator@4.0.0: {}
 
