@@ -6,41 +6,6 @@ export default {
   data() {
     return {
       desserts: [
-        {
-          brandName: 'Frozen Yogurt',
-          goodsName: 159,
-          groupType: 6,
-          inventoryNum: 24,
-          specName: 4,
-        },
-        {
-          brandName: 'Ice cream sandwich',
-          goodsName: 237,
-          groupType: 6,
-          inventoryNum: 24,
-          specName: 4,
-        },
-        {
-          brandName: 'Eclair',
-          goodsName: 262,
-          groupType: 6,
-          inventoryNum: 24,
-          specName: 4,
-        },
-        {
-          brandName: 'Cupcake',
-          goodsName: 305,
-          groupType: 6,
-          inventoryNum: 24,
-          specName: 4,
-        },
-        {
-          brandName: 'Gingerbread',
-          goodsName: 356,
-          groupType: 6,
-          inventoryNum: 24,
-          specName: 4,
-        },
       ],
     };
   },
@@ -49,7 +14,8 @@ export default {
     axios.get(BASE_URL + 'inventory/inventory-waring')
       .then(response => {
         // 成功时的处理逻辑
-        console.log(response);
+        this.desserts = response.data;
+        console.log(this.desserts);
       })
       .catch(error => {
         // 错误处理
@@ -92,7 +58,7 @@ export default {
 
     <tbody>
       <tr v-for="item in desserts" :key="item.id">
-        <td>
+        <td class="text-center">
           {{ item.brandName }}
         </td>
         <td class="text-center">
@@ -114,9 +80,26 @@ export default {
           {{ item.turnoverDays }}
         </td>
         <td class="text-center">
-          {{ item.waringLevel }}
+          <div class="circle" :style="{ 'background': item.waringLevel }">
+            <!-- {{ item.waringLevel }} -->
+          </div>
         </td>
       </tr>
     </tbody>
   </VTable>
 </template>
+<style lang="scss">
+.text-uppercase {
+  border: 1px solid black;
+}
+
+.text-center {
+  border: 1px solid black;
+}
+
+.circle {
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+}
+</style>
