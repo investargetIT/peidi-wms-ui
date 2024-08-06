@@ -1,12 +1,12 @@
 <script setup>
-import ExpiryWarning from '@/views/pages/tables/ExpiryWarning.vue'
+import ValidityWarning from '@/views/pages/tables/ValidityWarning.vue';
 </script>
 
 <template>
   <VRow>
     <VCol cols="12">
       <VCard title="有效期预警">
-        <ExpiryWarning />
+        <ValidityWarning />
       </VCard>
     </VCol>
   </VRow>
