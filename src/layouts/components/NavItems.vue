@@ -26,7 +26,7 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
   <VerticalNavLink :item="{
     title: '参数配置',
     icon: 'ri-table-alt-line',
-    to: '/configuration',
+    to: '/inventory/config',
   }" />
 
   <VerticalNavLink :item="{

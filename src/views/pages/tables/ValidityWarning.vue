@@ -5,7 +5,7 @@ const BASE_URL = import.meta.env.VITE_API_ENDPOINT;
 export default {
   data() {
     return {
-      items: [],
+      desserts: [],
     }
   },
   mounted() {
@@ -14,7 +14,10 @@ export default {
       .then(response => {
         // 成功时的处理逻辑
         console.log(response);
-        this.items = response.data;
+        const { code, data } = response.data;
+        if (code == 200) {
+          this.desserts = data;
+        }
       })
       .catch(error => {
         // 错误处理
@@ -50,7 +53,7 @@ export default {
     </thead>
 
     <tbody>
-      <tr v-for="item in items" :key="item.specNo">
+      <tr v-for="item in desserts" :key="item.specNo">
         <td>
           {{ item.brandName }}
         </td>
