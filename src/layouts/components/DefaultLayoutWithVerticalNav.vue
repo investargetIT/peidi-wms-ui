@@ -20,28 +20,28 @@ import UserProfile from '@/layouts/components/UserProfile.vue'
         <!-- 👉 Search -->
         <div class="d-flex align-center cursor-pointer" style="user-select: none;">
           <!-- 👉 Search Trigger button -->
-          <IconBtn>
+          <!-- <IconBtn>
             <VIcon icon="ri-search-line" />
           </IconBtn>
 
           <span class="d-none d-md-flex align-center text-disabled">
             <span class="me-3">Search</span>
             <span class="meta-key">&#8984;K</span>
-          </span>
+          </span> -->
         </div>
 
         <VSpacer />
 
-        <IconBtn href="https://github.com/themeselection/materio-vuetify-vuejs-admin-template-free" target="_blank"
+        <!-- <IconBtn href="https://github.com/themeselection/materio-vuetify-vuejs-admin-template-free" target="_blank"
           rel="noopener noreferrer">
           <VIcon icon="ri-github-fill" />
-        </IconBtn>
+        </IconBtn> -->
 
-        <IconBtn>
+        <!-- <IconBtn>
           <VIcon icon="ri-notification-line" />
-        </IconBtn>
+        </IconBtn> -->
 
-        <NavbarThemeSwitcher class="me-2" />
+        <!-- <NavbarThemeSwitcher class="me-2" /> -->
 
         <UserProfile />
       </div>
