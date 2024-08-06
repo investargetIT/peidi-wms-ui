@@ -89,14 +89,6 @@ export default {
   </VTable>
 </template>
 <style lang="scss">
-.text-uppercase {
-  border: 1px solid black;
-}
-
-.text-center {
-  border: 1px solid black;
-}
-
 .circle {
   border-radius: 50%;
   height: 20px;
