@@ -33,6 +33,14 @@ export const routes = [
         component: () => import('@/pages/inventory-warning.vue'),
       },
       {
+        path: 'configuration',
+        component: () => import('@/pages/configuration.vue'),
+      },
+      {
+        path: 'inventory-turnover',
+        component: () => import('@/pages/inventory-turnover.vue'),
+      },
+      {
         path: 'form-layouts',
         component: () => import('@/pages/form-layouts.vue'),
       },
