@@ -1,87 +1,139 @@
 <template>
-  <div class="info-container">
-    <div v-for="(item, index) in items" :key="item.id" class="info-item">
-      <span>{{ item.text }}</span>
-      <button class="delete-button" @click="removeItem(index)">删除</button>
+  <div class="warehouse-container">
+    <!-- List of existing warehouses -->
+    <div class="warehouses-list">
+      <div v-for="(warehouse, index) in warehouses" :key="index" class="warehouse-item">
+        <span>{{ warehouse.name }}</span>
+        <span @click="deleteWarehouse(index)" class="delete-icon">&#10005;</span>
+      </div>
     </div>
-    <button class="add-button" @click="addItem">添加项</button>
+
+    <!-- Section for adding a new warehouse -->
+    <div class="add-warehouse-input">
+      <input type="text" v-model="newWarehouseName" placeholder="输入新仓库名称">
+      <button @click="addWarehouse">添加</button>
+    </div>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue';
-
 export default {
-  name: 'InfoList',
-  setup() {
-    const items = ref([
-      { id: 1, text: '信息 1' },
-      { id: 2, text: '信息 2' },
-    ]);
-
-    const removeItem = (index) => {
-      items.value.splice(index, 1);
-    };
-
-    const addItem = () => {
-      const newId = items.value.length ? items.value[items.value.length - 1].id + 1 : 1;
-      items.value.push({ id: newId, text: `信息 ${newId}` });
-    };
-
+  data() {
     return {
-      items,
-      removeItem,
-      addItem,
+      warehouses: [
+        { id: 1, name: '现货仓' },
+        { id: 2, name: '京东仓' },
+        { id: 3, name: '天猫仓' },
+        { id: 4, name: '自营仓' }
+      ],
+      newWarehouseName: ''
     };
   },
+  methods: {
+    addWarehouse() {
+      if (this.newWarehouseName.trim() !== '') {
+        addWarehouseAPI({ name: this.newWarehouseName })
+          .then(newWarehouse => {
+            this.warehouses.push(newWarehouse);
+            this.newWarehouseName = ''; // Clear input field
+          })
+          .catch(error => {
+            console.error('新增接口调用失败', error);
+          });
+      }
+    },
+    deleteWarehouse(index) {
+      deleteWarehouseAPI(this.warehouses[index].id)
+        .then(() => {
+          this.warehouses.splice(index, 1);
+        })
+        .catch(error => {
+          console.error('删除接口调用失败', error);
+        });
+    }
+  }
 };
+
+// Example API functions, replace with actual API calls in your project
+function addWarehouseAPI(newWarehouse) {
+  return new Promise((resolve, reject) => {
+    // Simulated API call, replace with actual API request
+    setTimeout(() => {
+      // Simulating success
+      const id = Math.floor(Math.random() * 1000) + 1; // Generate random ID
+      const warehouse = { id, name: newWarehouse.name };
+      resolve(warehouse);
+    }, 500); // Simulated delay of 500ms
+  });
+}
+
+function deleteWarehouseAPI(warehouseId) {
+  return new Promise((resolve, reject) => {
+    // Simulated API call, replace with actual API request
+    setTimeout(() => {
+      // Simulating success
+      resolve();
+    }, 300); // Simulated delay of 300ms
+  });
+}
 </script>
 
 <style scoped>
-.info-container {
-  max-width: 600px;
+.warehouse-container {
   margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
 }
 
-.info-item {
+.warehouses-list {
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.warehouse-item {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
-}
-
-.info-item span {
-  flex: 1;
-  margin-right: 10px;
-}
-
-.delete-button {
-  background-color: #dc3545;
-  color: white;
-  border: none;
+  margin-bottom: 5px;
   padding: 5px 10px;
-  border-radius: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.delete-icon {
   cursor: pointer;
+  color: #f44336;
+  font-size: 16px;
 }
 
-.delete-button:hover {
-  background-color: #c82333;
+.add-warehouse-input {
+  display: flex;
+  align-items: center;
 }
 
-.add-button {
-  background-color: #007bff;
+.add-warehouse-input input {
+  width: 200px;
+  /* Adjust width as needed */
+  margin-right: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-warehouse-input button {
+  width: 80px;
+  /* Adjust width as needed */
+  padding: 6px 10px;
+  background-color: #4caf50;
   color: white;
   border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
-  margin-top: 10px;
 }
 
-.add-button:hover {
-  background-color: #0056b3;
+.add-warehouse-input button:hover {
+  background-color: #45a049;
 }
 </style>
