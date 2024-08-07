@@ -32,6 +32,11 @@ export const routes = [
         path: 'inventory-warning',
         component: () => import('@/pages/inventory-warning.vue'),
       },
+      
+            {
+        path: 'inventory/config',
+        component: () => import('@/pages/inventory/config.vue'),
+      },
       {
         path: 'configuration',
         component: () => import('@/pages/configuration.vue'),
