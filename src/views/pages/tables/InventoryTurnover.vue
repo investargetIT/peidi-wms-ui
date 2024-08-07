@@ -9,7 +9,7 @@ export default {
         };
     },
     mounted() {
-        console.log('base url', BASE_URL);
+        // console.log('base url', BASE_URL);
         axios.get(BASE_URL + 'inventory/turnoverCoefficient')
             .then(response => {
                 const { code, data } = response.data;
@@ -17,21 +17,42 @@ export default {
                     this.tableData = data;
                 }
                 // 成功时的处理逻辑
-                console.log(this.tableData);
+                // console.log(this.tableData);
             })
             .catch(error => {
                 // 错误处理
                 console.error("API调用错误：", error);
             });
     },
+    methods: {
+        handleEditClosed() {
+            // 编辑关闭事件的处理逻辑
+            const url = BASE_URL + 'inventory/turnoverCoefficient';
+            const data = {
+                reqs: this.tableData,
+            }; // 要传递的参数
+
+            axios.post(url, data)
+                .then(response => {
+                    // 处理响应数据
+                    console.log(response.data);
+                })
+                .catch(error => {
+                    // 处理错误情况
+                    console.error(error);
+                });
+        },
+    },
 };
 </script>
 
-
 <template>
     <div>
-        <vxe-table border show-overflow :edit-config="{ trigger: 'click', mode: 'cell' }" :data="tableData">
-            <vxe-column type="checkbox" width="60"></vxe-column>
+        <!-- <p>
+            <vxe-input v-model="filterName" type="search" placeholder="试试全表搜索" @keyup="searchEvent"></vxe-input>
+        </p> -->
+        <vxe-table border show-overflow :edit-config="{ trigger: 'click', mode: 'cell' }" :data="tableData"
+            @edit-closed="handleEditClosed">
             <vxe-column type="seq" title="序号" width="70"></vxe-column>
             <vxe-column field="specNo" title="商家编码" :edit-render="{ name: 'input' }"></vxe-column>
             <vxe-column field="goodsName" title="货品名称" :edit-render="{ name: 'input' }"></vxe-column>
