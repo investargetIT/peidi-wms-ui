@@ -1,10 +1,8 @@
 <script setup>
-import NavItems from '@/layouts/components/NavItems.vue'
-import logo from '@images/logo.svg?raw'
-import VerticalNavLayout from '@layouts/components/VerticalNavLayout.vue'
-import Footer from '@/layouts/components/Footer.vue'
-import NavbarThemeSwitcher from '@/layouts/components/NavbarThemeSwitcher.vue'
-import UserProfile from '@/layouts/components/UserProfile.vue'
+import NavItems from '@/layouts/components/NavItems.vue';
+import UserProfile from '@/layouts/components/UserProfile.vue';
+import logo from '@images/logo.png';
+import VerticalNavLayout from '@layouts/components/VerticalNavLayout.vue';
 </script>
 
 <template>
@@ -50,12 +48,13 @@ import UserProfile from '@/layouts/components/UserProfile.vue'
     <template #vertical-nav-header="{ toggleIsOverlayNavActive }">
       <RouterLink to="/" class="app-logo app-title-wrapper">
         <!-- eslint-disable vue/no-v-html -->
-        <div class="d-flex" v-html="logo" />
+        <!-- <div class="d-flex" v-html="logo" /> -->
+        <VImg :src="logo" width="200" />
         <!-- eslint-enable -->
 
-        <h1 class="font-weight-medium leading-normal text-xl text-uppercase">
+        <!-- <h1 class="font-weight-medium leading-normal text-xl text-uppercase">
           佩蒂智创
-        </h1>
+        </h1> -->
       </RouterLink>
 
       <IconBtn class="d-block d-lg-none" @click="toggleIsOverlayNavActive(false)">
