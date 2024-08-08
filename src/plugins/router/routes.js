@@ -1,5 +1,5 @@
 export const routes = [
-  { path: '/', redirect: '/validity-warning' },
+  { path: '/', redirect: '/inventory-warning' },
   {
     path: '/',
     component: () => import('@/layouts/default.vue'),
