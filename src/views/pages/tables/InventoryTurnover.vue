@@ -28,11 +28,7 @@ export default {
         handleEditClosed() {
             // 编辑关闭事件的处理逻辑
             const url = BASE_URL + 'inventory/turnoverCoefficient';
-            const data = {
-                reqs: this.tableData,
-            }; // 要传递的参数
-
-            axios.post(url, data)
+            axios.post(url, this.tableData)
                 .then(response => {
                     // 处理响应数据
                     console.log(response.data);
