@@ -4,13 +4,6 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
 
 <template>
 
-  <!-- 👉 Forms & Tables -->
-  <!-- <VerticalNavSectionTitle
-    :item="{
-      heading: '配置信息',
-    }"
-  /> -->
-
   <VerticalNavLink :item="{
     title: '库存报警',
     icon: 'ri-table-alt-line',
@@ -24,15 +17,15 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
   }" />
 
   <VerticalNavLink :item="{
-    title: '参数配置',
-    icon: 'ri-table-alt-line',
-    to: '/inventory/config',
-  }" />
-
-  <VerticalNavLink :item="{
     title: '库存周转系数配置',
     icon: 'ri-table-alt-line',
     to: '/inventory-turnover',
+  }" />
+
+  <VerticalNavLink :item="{
+    title: '参数配置',
+    icon: 'ri-table-alt-line',
+    to: '/inventory/config',
   }" />
 
 </template>
