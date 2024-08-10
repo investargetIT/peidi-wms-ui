@@ -11,7 +11,7 @@ export default {
   },
   mounted() {
     console.log('base url', BASE_URL);
-    axios.get(BASE_URL + 'inventory/inventory-waring')
+    axios.get(BASE_URL + '/inventory/inventory-waring')
       .then(response => {
         // 成功时的处理逻辑
         this.desserts = response.data;
@@ -92,5 +92,6 @@ export default {
 .circle {
   border-radius: 50%;
   height: 20px;
-  width: 20px;}
+  width: 20px;
+}
 </style>

@@ -9,8 +9,7 @@ export default {
         };
     },
     mounted() {
-        // console.log('base url', BASE_URL);
-        axios.get(BASE_URL + 'inventory/turnoverCoefficient')
+        axios.get(BASE_URL + '/inventory/turnoverCoefficient')
             .then(response => {
                 const { code, data } = response.data;
                 if (code == 200) {
@@ -27,7 +26,7 @@ export default {
     methods: {
         handleEditClosed() {
             // 编辑关闭事件的处理逻辑
-            const url = BASE_URL + 'inventory/turnoverCoefficient';
+            const url = BASE_URL + '/inventory/turnoverCoefficient';
             axios.post(url, this.tableData)
                 .then(response => {
                     // 处理响应数据

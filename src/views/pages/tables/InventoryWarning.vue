@@ -10,8 +10,7 @@ export default {
     };
   },
   mounted() {
-    console.log('base url', BASE_URL);
-    axios.get(BASE_URL + 'inventory/inventory-waring')
+    axios.get(BASE_URL + '/inventory/inventory-waring')
       .then(response => {
         const { code, data } = response.data;
         if (code == 200) {

@@ -9,8 +9,7 @@ export default {
     }
   },
   mounted() {
-    console.log('base url', BASE_URL);
-    axios.get(BASE_URL + 'inventory/validity-waring')
+    axios.get(BASE_URL + '/inventory/validity-waring')
       .then(response => {
         // 成功时的处理逻辑
         console.log(response);
