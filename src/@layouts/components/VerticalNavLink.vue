@@ -8,28 +8,17 @@ const props = defineProps({
 </script>
 
 <template>
-  <li
-    class="nav-link"
-    :class="{ disabled: item.disable }"
-  >
-    <Component
-      :is="item.to ? 'RouterLink' : 'a'"
-      :to="item.to"
-      :href="item.href"
-      :target="item.target"
-    >
-      <VIcon
+  <li class="nav-link" :class="{ disabled: item.disable }">
+    <Component :is="item.to ? 'RouterLink' : 'a'" :to="item.to" :href="item.href" :target="item.target">
+      <!-- <VIcon
         :icon="item.icon || 'ri-checkbox-blank-circle-line'"
         class="nav-item-icon"
-      />
+      /> -->
       <!-- 👉 Title -->
       <span class="nav-item-title">
         {{ item.title }}
       </span>
-      <span
-        class="nav-item-badge"
-        :class="item.badgeClass"
-      >
+      <span class="nav-item-badge" :class="item.badgeClass">
         {{ item.badgeContent }}
       </span>
     </Component>

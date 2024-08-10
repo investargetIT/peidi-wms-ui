@@ -49,12 +49,12 @@ import VerticalNavLayout from '@layouts/components/VerticalNavLayout.vue';
       <RouterLink to="/" class="app-logo app-title-wrapper">
         <!-- eslint-disable vue/no-v-html -->
         <!-- <div class="d-flex" v-html="logo" /> -->
-        <VImg :src="logo" width="200" />
+        <VImg :src="logo" width="100" />
         <!-- eslint-enable -->
 
-        <!-- <h1 class="font-weight-medium leading-normal text-xl text-uppercase">
-          佩蒂智创
-        </h1> -->
+        <h1 class="font-weight-bold leading-normal text-xl text-uppercase title">
+          库存预警系统
+        </h1>
       </RouterLink>
 
       <IconBtn class="d-block d-lg-none" @click="toggleIsOverlayNavActive(false)">
@@ -97,5 +97,9 @@ import VerticalNavLayout from '@layouts/components/VerticalNavLayout.vue';
     line-height: 1.75rem;
     text-transform: uppercase;
   }
+}
+
+h1.title {
+  font-size: 18px;
 }
 </style>
