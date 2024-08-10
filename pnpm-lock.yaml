@@ -48,6 +48,9 @@ importers:
       vue-flatpickr-component:
         specifier: 11.0.5
         version: 11.0.5(vue@3.4.34(typescript@5.5.4))
+      vue-multiselect:
+        specifier: ^3.0.0
+        version: 3.0.0
       vue-prism-component:
         specifier: ^2.0.0
         version: 2.0.0
@@ -2919,6 +2922,10 @@ packages:
     engines: {node: '>=14.13.0'}
     peerDependencies:
       vue: ^3.2.0
+
+  vue-multiselect@3.0.0:
+    resolution: {integrity: sha512-uupKdINgz7j83lQToCL7KkgQQxvG43el++hsR39YT9pCe1DwzUGmKzPxjVP6rqskXed5P6DtUASYAlCliW740Q==}
+    engines: {node: '>= 14.18.1', npm: '>= 6.14.15'}
 
   vue-prism-component@2.0.0:
     resolution: {integrity: sha512-1ofrL+GCZOv4HqtX5W3EgkhSAgadSeuD8FDTXbwhLy8kS+28RCR8t2S5VTeM9U/peAaXLBpSgRt3J25ao8KTeg==}
@@ -6198,6 +6205,8 @@ snapshots:
     dependencies:
       flatpickr: 4.6.13
       vue: 3.4.34(typescript@5.5.4)
+
+  vue-multiselect@3.0.0: {}
 
   vue-prism-component@2.0.0: {}
 
