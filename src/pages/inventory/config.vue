@@ -5,7 +5,7 @@ import config from '@/views/pages/inventory/config.vue';
 <template>
   <VRow>
     <VCol cols="12">
-      <VCard title="库存周转系数配置">
+      <VCard title="参数配置">
         <config />
       </VCard>
     </VCol>
