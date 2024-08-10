@@ -1,6 +1,6 @@
 <script setup>
 import NavItems from '@/layouts/components/NavItems.vue';
-import UserProfile from '@/layouts/components/UserProfile.vue';
+// import UserProfile from '@/layouts/components/UserProfile.vue';
 import logo from '@images/logo.png';
 import VerticalNavLayout from '@layouts/components/VerticalNavLayout.vue';
 </script>
@@ -41,7 +41,7 @@ import VerticalNavLayout from '@layouts/components/VerticalNavLayout.vue';
 
         <!-- <NavbarThemeSwitcher class="me-2" /> -->
 
-        <UserProfile />
+        <!-- <UserProfile /> -->
       </div>
     </template>
 
