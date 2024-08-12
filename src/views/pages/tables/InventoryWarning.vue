@@ -44,16 +44,16 @@ export default {
           规格名称
         </th>
         <th class="text-uppercase text-center">
+          库存数量
+        </th>
+        <th class="text-uppercase text-center">
+          预计可周转天数
+        </th>
+        <th class="text-uppercase text-center">
           分类
         </th>
         <th class="text-uppercase text-center">
-          库存量
-        </th>
-        <th class="text-uppercase text-center">
-          预警天数
-        </th>
-        <th class="text-uppercase text-center">
-          预警状态
+          库存预警
         </th>
       </tr>
     </thead>
@@ -73,18 +73,16 @@ export default {
           {{ item.specName }}
         </td>
         <td class="text-center">
-          {{ item.groupType }}
-        </td>
-        <td class="text-center">
           {{ item.inventoryNum }}
         </td>
         <td class="text-center">
           {{ item.turnoverDays }}
         </td>
         <td class="text-center">
-          <div class="circle" :style="{ 'background': item.waringLevel }">
-            <!-- {{ item.waringLevel }} -->
-          </div>
+          {{ item.groupType }}
+        </td>
+        <td class="text-center">
+          <div class="circle" :style="{ 'background': item.waringLevel }" />
         </td>
       </tr>
     </tbody>

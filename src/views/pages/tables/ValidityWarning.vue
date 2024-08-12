@@ -46,7 +46,16 @@ export default {
           分类
         </th>
         <th class="text-uppercase text-center">
-          有效期预警
+          1/3效期
+        </th>
+        <th class="text-uppercase text-center">
+          2/3效期
+        </th>
+        <th class="text-uppercase text-center">
+          临期
+        </th>
+        <th class="text-uppercase text-center">
+          库存数量
         </th>
       </tr>
     </thead>
@@ -63,10 +72,19 @@ export default {
           {{ item.goodsName }}
         </td>
         <td class="text-center">
-          {{ item.specNName }}
+          {{ item.specName }}
         </td>
         <td class="text-center">
           {{ item.groupType }}
+        </td>
+        <td class="text-center">
+          {{ item.waring1Num }}
+        </td>
+        <td class="text-center">
+          {{ item.waring2Num }}
+        </td>
+        <td class="text-center">
+          {{ item.waring3Num }}
         </td>
         <td class="text-center">
           {{ item.inventoryNum }}
