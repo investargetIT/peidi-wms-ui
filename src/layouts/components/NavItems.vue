@@ -5,13 +5,13 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
 <template>
 
   <VerticalNavLink :item="{
-    title: '库存报警',
+    title: '库存预警',
     icon: 'ri-table-alt-line',
     to: '/inventory-warning',
   }" />
 
   <VerticalNavLink :item="{
-    title: '有效期预警',
+    title: '效期预警',
     icon: 'ri-table-alt-line',
     to: '/validity-warning',
   }" />

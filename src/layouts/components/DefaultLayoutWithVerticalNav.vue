@@ -53,7 +53,7 @@ import VerticalNavLayout from '@layouts/components/VerticalNavLayout.vue';
         <!-- eslint-enable -->
 
         <h1 class="font-weight-bold leading-normal text-xl text-uppercase title">
-          库存预警系统
+          库存管理
         </h1>
       </RouterLink>
 
