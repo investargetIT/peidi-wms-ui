@@ -13,6 +13,11 @@ cp .env.example .env
 ```
 4. 访问 http://localhost:5173/
 
+# 打包
+```
+docker run peidi-wms-ui pnpm run build
+```
+
 # 安装依赖
 1. 进入容器
 ```
