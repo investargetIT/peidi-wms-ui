@@ -15,7 +15,7 @@ cp .env.example .env
 
 # 打包
 ```
-docker run peidi-wms-ui pnpm run build
+docker exec peidi-wms-ui pnpm run build
 ```
 
 # 安装依赖
