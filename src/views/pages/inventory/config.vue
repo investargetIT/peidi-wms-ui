@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <div v-for="item in configs" :key="item.fields" class="item">
-      <label class="typo__label">{{ item.label }}</label>
+      <label class="typo__label">{{ item.label }}<span :style="{ color: item.type == 'delete' ? 'red' : 'unset' }">{{
+        item.type == 'delete' ? '（去除）' : '（包含）'
+          }}</span></label>
       <multiselect tag-placeholder="添加新标签" placeholder="搜索或添加标签" deselectLabel="回车删除" :options="item.value"
         v-model="item.value" :multiple="true" :taggable="true" :show-no-options="false" @tag="addTag($event, item)" />
     </div>
