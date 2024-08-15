@@ -1,4 +1,5 @@
 <script setup>
+import bg from '@images/pages/login.jpeg';
 import { useTheme } from 'vuetify';
 
 const form = ref({
@@ -17,10 +18,10 @@ const isPasswordVisible = ref(false)
   <!-- eslint-disable vue/no-v-html -->
 
   <div class="auth-wrapper d-flex align-center justify-center pa-4" style="min-height: 100vh; /* 确保容器至少占据整个视口的高度 */
-  background: url('src/assets/images/pages/login.jpeg') no-repeat center bottom / cover;
+  background: no-repeat center bottom / cover;
   display: flex;
   align-items: center;
-  justify-content: flex-end;">
+  justify-content: flex-end;" :style="{ backgroundImage: `url(${bg})` }">
     <VCard class="auth-card pa-4 pt-7"
       style="width: 300px; max-width: 90vw; max-height: 600px;margin-left: auto; margin-right:2.3%;">
       <VCardItem class="d-flex flex-column align-start">
