@@ -22,7 +22,13 @@ export default {
   },
   methods: {
     updateData() {
-      axios.get(BASE_URL + '/inventory/inventory-waring')
+      const defaultSort = [
+        { sortName: 'waringLevel', sortType: 'desc' },
+        { sortName: 'groupType', sortType: 'desc' },
+        { sortName: 'brandName', sortType: 'desc' },
+        { sortName: 'inventoryNum', sortType: 'desc' },
+      ];
+      axios.get(BASE_URL + '/inventory/inventory-waring?sortStr=' + encodeURIComponent(JSON.stringify(defaultSort)))
         .then(response => {
           const { code, data } = response.data;
           if (code == 200) {
