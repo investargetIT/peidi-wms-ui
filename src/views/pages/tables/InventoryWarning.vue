@@ -34,8 +34,6 @@ export default {
           if (code == 200) {
             this.items = data;
           }
-          // 成功时的处理逻辑
-          console.log(this.items);
         })
         .catch(error => {
           // 错误处理
