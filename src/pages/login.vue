@@ -3,7 +3,7 @@ import bg from '@images/pages/login.jpeg';
 import { useTheme } from 'vuetify';
 
 const form = ref({
-  email: '',
+  username: '',
   password: '',
   remember: false,
 })
@@ -34,21 +34,21 @@ const isPasswordVisible = ref(false)
         </RouterLink>
       </VCardItem>
 
-      <VCardText class="pt-2">
-        <!-- <h4 class="text-h4 mb-1">
+      <!-- <VCardText class="pt-2">
+        <h4 class="text-h4 mb-1">
           Welcome to Materio! 👋🏻
-        </h4> -->
-        <!-- <p class="mb-0">
+        </h4>
+        <p class="mb-0">
           Please sign-in to your account and start the adventure
-        </p> -->
-      </VCardText>
+        </p>
+      </VCardText> -->
 
       <VCardText>
-        <VForm @submit.prevent="() => { }">
+        <VForm @submit.prevent="handleSubmit">
           <VRow>
-            <!-- email -->
+            <!-- username -->
             <VCol cols="12">
-              <VTextField v-model="form.email" label="用户名" type="email" class="mb-4" />
+              <VTextField v-model="form.username" label="用户名" type="username" class="mb-4" />
             </VCol>
 
             <!-- password -->
@@ -101,3 +101,57 @@ const isPasswordVisible = ref(false)
 <style lang="scss">
 @use "@core/scss/template/pages/page-auth";
 </style>
+
+<script>
+const BASE_URL = import.meta.env.VITE_API_USER_ENDPOINT;
+export default {
+  data() {
+    return {
+      username: '',
+      password: ''
+    };
+  },
+  methods: {
+    async handleSubmit() {
+      try {
+        console.error('错误！');
+        // 假设你的登录接口是 '/api/login'
+        const response = await fetch(BASE_URL + 'user/login/password', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: this.username,
+            password: this.password
+          }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          // 登录成功处理
+          console.log('Login successful:', result);
+          // 可以执行登录成功后的逻辑，比如跳转到其他页面
+          // 假设 result 中包含 token 信息
+          if (result.token) {
+            // 将 token 存储到 localStorage
+            localStorage.setItem('authToken', result.token);
+            // 可以执行登录成功后的逻辑，比如跳转到其他页面
+            this.$router.push('/dashboard'); // 例如跳转到用户仪表板
+          } else {
+            console.error('No token found in the response');
+          }
+        } else {
+          // 登录失败处理
+          this.errorMessage = result.message || 'Login failed. Please try again.';
+          console.error('Login failed:', result);
+        }
+      } catch (error) {
+        // 网络错误处理
+        console.error('Network error:', error);
+      }
+    }
+  }
+};
+</script>
