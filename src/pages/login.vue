@@ -48,12 +48,12 @@ const isPasswordVisible = ref(false)
           <VRow>
             <!-- username -->
             <VCol cols="12">
-              <VTextField v-model="form.username" label="用户名" type="username" class="mb-4" />
+              <VTextField v-model="username" label="用户名" type="username" class="mb-4" />
             </VCol>
 
             <!-- password -->
             <VCol cols="12">
-              <VTextField v-model="form.password" label="密码" placeholder="············"
+              <VTextField v-model="password" label="密码" placeholder="············"
                 :type="isPasswordVisible ? 'text' : 'password'"
                 :append-inner-icon="isPasswordVisible ? 'ri-eye-off-line' : 'ri-eye-line'"
                 @click:append-inner="isPasswordVisible = !isPasswordVisible" class="mb-4" />
@@ -114,9 +114,7 @@ export default {
   methods: {
     async handleSubmit() {
       try {
-        console.error('错误！');
-        // 假设你的登录接口是 '/api/login'
-        const response = await fetch(BASE_URL + 'user/login/password', {
+        const response = await fetch(BASE_URL + '/user/login/password', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
