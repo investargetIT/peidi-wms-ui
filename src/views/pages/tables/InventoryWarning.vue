@@ -24,7 +24,7 @@ export default {
     updateData() {
       const defaultSort = [
         { sortName: 'waringLevel', sortType: 'desc' },
-        { sortName: 'groupType', sortType: 'desc' },
+        { sortName: 'groupType', sortType: 'asc' },
         { sortName: 'brandName', sortType: 'desc' },
         { sortName: 'inventoryNum', sortType: 'desc' },
       ];
