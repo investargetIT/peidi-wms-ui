@@ -66,7 +66,14 @@ export default {
         });
     },
     updateData() {
-      axios.get(BASE_URL + '/inventory/validity-waring')
+      const defaultSort = [
+        { sortName: 'waring3Num', sortType: 'desc' },
+        { sortName: 'waring2Num', sortType: 'desc' },
+        { sortName: 'waring1Num', sortType: 'desc' },
+        { sortName: 'groupType', sortType: 'desc' },
+        { sortName: 'brandName', sortType: 'desc' },
+      ];
+      axios.get(BASE_URL + '/inventory/validity-waring?sortStr=' + encodeURIComponent(JSON.stringify(defaultSort)))
         .then(response => {
           const { code, data } = response.data;
           if (code == 200) {
