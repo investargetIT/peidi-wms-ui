@@ -117,12 +117,9 @@ export default {
         const response = await fetch(BASE_URL + '/user/login/password', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
           },
-          body: JSON.stringify({
-            username: this.username,
-            password: this.password
-          }),
+          body: `username=${this.username}&password=${this.password}`,
         });
 
         const result = await response.json();
