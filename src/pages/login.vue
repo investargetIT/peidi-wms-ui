@@ -1,15 +1,5 @@
 <script setup>
 import bg from '@images/pages/login.jpeg';
-import { useTheme } from 'vuetify';
-
-const form = ref({
-  username: '',
-  password: '',
-  remember: false,
-})
-
-const vuetifyTheme = useTheme()
-
 
 const isPasswordVisible = ref(false)
 </script>
@@ -29,7 +19,7 @@ const isPasswordVisible = ref(false)
           <!-- eslint-disable vue/no-v-html -->
           <!-- <div class="d-flex" v-html="logo" /> -->
           <h2 class="font-weight-medium text-2xl text-uppercase" style="text-align: left;">
-            欢迎登陆
+            欢迎登录
           </h2>
         </RouterLink>
       </VCardItem>
@@ -67,9 +57,7 @@ const isPasswordVisible = ref(false)
               </div> -->
 
               <!-- login button -->
-              <VBtn block type="submit">
-                登陆
-              </VBtn>
+              <VBtn block type="submit">登录</VBtn>
             </VCol>
 
             <!-- create account -->
@@ -95,6 +83,14 @@ const isPasswordVisible = ref(false)
       </VCardText>
     </VCard>
 
+    <v-dialog v-model="dialog" width="auto">
+      <v-card min-width="400" title="登录失败" subtitle="用户名或密码错误">
+        <template v-slot:actions>
+          <v-btn class="ms-auto" text="取消" @click="dialog = false"></v-btn>
+        </template>
+      </v-card>
+    </v-dialog>
+
   </div>
 </template>
 
@@ -108,7 +104,8 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      dialog: false,
     };
   },
   methods: {
@@ -121,26 +118,13 @@ export default {
           },
           body: `username=${this.username}&password=${this.password}`,
         });
-
         const result = await response.json();
-
-        if (response.ok) {
-          // 登录成功处理
-          console.log('Login successful:', result);
-          // 可以执行登录成功后的逻辑，比如跳转到其他页面
-          // 假设 result 中包含 token 信息
-          if (result.token) {
-            // 将 token 存储到 localStorage
-            localStorage.setItem('authToken', result.token);
-            // 可以执行登录成功后的逻辑，比如跳转到其他页面
-            this.$router.push('/dashboard'); // 例如跳转到用户仪表板
-          } else {
-            console.error('No token found in the response');
-          }
+        if (result.success) {
+          localStorage.setItem('authToken', result.data);
+          this.$router.push('/inventory-warning');
         } else {
-          // 登录失败处理
-          this.errorMessage = result.message || 'Login failed. Please try again.';
-          console.error('Login failed:', result);
+          this.dialog = true;
+          console.log('Login failed:', result);
         }
       } catch (error) {
         // 网络错误处理
