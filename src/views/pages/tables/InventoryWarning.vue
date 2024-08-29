@@ -5,6 +5,12 @@ const BASE_URL = import.meta.env.VITE_API_ENDPOINT;
 export default {
   data() {
     return {
+      defaultSort: [
+        { sortName: 'waringLevel', sortType: 'desc' },
+        { sortName: 'groupType', sortType: 'asc' },
+        { sortName: 'brandName', sortType: 'desc' },
+        { sortName: 'inventoryNum', sortType: 'desc' },
+      ],
       searchQuery: {
         brandName: null,
         specNo: '',
@@ -46,10 +52,9 @@ export default {
   },
   methods: {
     onSearch() {
-      // 在这里实现你的搜索逻辑
-      // console.log('Searching with:', this.searchQuery);
       const encodedParams = encodeURIComponent(JSON.stringify(this.searchParams));
-      const url = `http://wmsapi.peidigroup.cn/inventory/inventory-waring?searchStr=${encodedParams}`;
+      const encodedSort = encodeURIComponent(JSON.stringify(this.defaultSort));
+      const url = `${BASE_URL}/inventory/inventory-waring?searchStr=${encodedParams}&sortStr=${encodedSort}`;
       fetch(url)
         .then(response => response.json())
         .then(responseData => {
@@ -63,13 +68,7 @@ export default {
         });
     },
     updateData() {
-      const defaultSort = [
-        { sortName: 'waringLevel', sortType: 'desc' },
-        { sortName: 'groupType', sortType: 'asc' },
-        { sortName: 'brandName', sortType: 'desc' },
-        { sortName: 'inventoryNum', sortType: 'desc' },
-      ];
-      axios.get(BASE_URL + '/inventory/inventory-waring?sortStr=' + encodeURIComponent(JSON.stringify(defaultSort)))
+      axios.get(BASE_URL + '/inventory/inventory-waring?sortStr=' + encodeURIComponent(JSON.stringify(this.defaultSort)))
         .then(response => {
           const { code, data } = response.data;
           if (code == 200) {
