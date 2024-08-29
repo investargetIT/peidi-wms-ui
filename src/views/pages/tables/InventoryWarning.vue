@@ -63,17 +63,20 @@ export default {
         });
     },
     updateData() {
-      axios.get(BASE_URL + '/inventory/inventory-waring')
+      const defaultSort = [
+        { sortName: 'waringLevel', sortType: 'desc' },
+        { sortName: 'groupType', sortType: 'asc' },
+        { sortName: 'brandName', sortType: 'desc' },
+        { sortName: 'inventoryNum', sortType: 'desc' },
+      ];
+      axios.get(BASE_URL + '/inventory/inventory-waring?sortStr=' + encodeURIComponent(JSON.stringify(defaultSort)))
         .then(response => {
           const { code, data } = response.data;
           if (code == 200) {
             this.items = data;
           }
-          // 成功时的处理逻辑
-          // console.log(this.items);
         })
         .catch(error => {
-          // 错误处理
           console.error("API调用错误：", error);
         });
     },
