@@ -6,7 +6,7 @@ export default {
   data() {
     return {
       searchQuery: {
-        brandName: '',
+        brandName: null,
         specNo: '',
         goodsName: '',
         specName: '',
@@ -44,7 +44,7 @@ export default {
         { searchName: 'waring2Num', searchType: 'like', searchValue: this.searchQuery.waring2Num },
         { searchName: 'waring3Num', searchType: 'like', searchValue: this.searchQuery.waring3Num },
         { searchName: 'inventoryNum', searchType: 'like', searchValue: this.searchQuery.inventoryNum },
-      ].filter(param => param.searchValue.trim() !== '')
+      ].filter(param => param.searchValue && param.searchValue.trim() !== '')
     }
   },
   methods: {
@@ -104,7 +104,8 @@ export default {
     <v-container>
       <v-row>
         <v-col cols="12" md="4" sm="6">
-          <v-text-field v-model="searchQuery.brandName" label="品牌" type="text" outlined dense></v-text-field>
+          <v-select v-model="searchQuery.brandName" clearable label="品牌"
+            :items="['SMARTBONES', '好适嘉', '齿能', 'Meatyway爵宴']" />
         </v-col>
         <v-col cols="12" md="4" sm="6">
           <v-text-field v-model="searchQuery.specNo" label="商品编码" type="text" outlined dense></v-text-field>
