@@ -16,8 +16,8 @@ export default {
         specNo: null,
         goodsName: null,
         specName: null,
-        inventoryNum: '',
-        turnoverDays: '',
+        inventoryNum: [0, 1000000],
+        turnoverDays: [0, 1000],
         groupType: null,
         waringLevel: null,
       },
@@ -45,8 +45,8 @@ export default {
         { searchName: 'specNo', searchType: 'like', searchValue: this.searchQuery.specNo },
         { searchName: 'goodsName', searchType: 'like', searchValue: this.searchQuery.goodsName },
         { searchName: 'specName', searchType: 'like', searchValue: this.searchQuery.specName },
-        { searchName: 'inventoryNum', searchType: 'like', searchValue: this.searchQuery.inventoryNum },
-        { searchName: 'turnoverDays', searchType: 'like', searchValue: this.searchQuery.turnoverDays },
+        { searchName: 'inventoryNum', searchType: 'between', searchValue: this.searchQuery.inventoryNum.join('#/#') },
+        { searchName: 'turnoverDays', searchType: 'between', searchValue: this.searchQuery.turnoverDays.join('#/#') },
         { searchName: 'groupType', searchType: 'like', searchValue: this.searchQuery.groupType },
         { searchName: 'waringLevel', searchType: 'like', searchValue: this.searchQuery.waringLevel },
       ].filter(param => param.searchValue && param.searchValue.trim() !== '')
@@ -121,29 +121,28 @@ export default {
           <v-autocomplete v-model="searchQuery.specName" clearable label="规格名称" :items="allSpecName" />
         </v-col>
         <v-col cols="12">
-          <!-- <v-text-field v-model="searchQuery.inventoryNum" label="库存数量" type="text" outlined dense></v-text-field> -->
-          <v-range-slider v-model="range" :max="10" :min="-10" :step="1" label="库存数量" class="align-center" hide-details>
+          <v-range-slider v-model="searchQuery.inventoryNum" :max="1000000" :min="0" :step="1" label="库存数量"
+            class="align-center" hide-details>
             <template v-slot:prepend>
-              <v-text-field v-model="range[0]" density="compact" style="width: 70px" type="number" variant="outlined"
-                hide-details single-line></v-text-field>
+              <v-text-field v-model="searchQuery.inventoryNum[0]" density="compact" style="width: 120px" type="number"
+                variant="outlined" hide-details single-line></v-text-field>
             </template>
             <template v-slot:append>
-              <v-text-field v-model="range[1]" density="compact" style="width: 70px" type="number" variant="outlined"
-                hide-details single-line></v-text-field>
+              <v-text-field v-model="searchQuery.inventoryNum[1]" density="compact" style="width: 120px" type="number"
+                variant="outlined" hide-details single-line></v-text-field>
             </template>
           </v-range-slider>
         </v-col>
         <v-col cols="12">
-          <!-- <v-text-field v-model="searchQuery.turnoverDays" label="预计可周转天数" type="text" outlined dense></v-text-field> -->
-          <v-range-slider v-model="range" :max="10" :min="-10" :step="1" label="预计可周转天数" class="align-center"
-            hide-details>
+          <v-range-slider v-model="searchQuery.turnoverDays" :max="1000" :min="0" :step="1" label="预计可周转天数"
+            class="align-center" hide-details>
             <template v-slot:prepend>
-              <v-text-field v-model="range[0]" density="compact" style="width: 70px" type="number" variant="outlined"
-                hide-details single-line></v-text-field>
+              <v-text-field v-model="searchQuery.turnoverDays[0]" density="compact" style="width: 120px" type="number"
+                variant="outlined" hide-details single-line></v-text-field>
             </template>
             <template v-slot:append>
-              <v-text-field v-model="range[1]" density="compact" style="width: 70px" type="number" variant="outlined"
-                hide-details single-line></v-text-field>
+              <v-text-field v-model="searchQuery.turnoverDays[1]" density="compact" style="width: 120px" type="number"
+                variant="outlined" hide-details single-line></v-text-field>
             </template>
           </v-range-slider>
         </v-col>
