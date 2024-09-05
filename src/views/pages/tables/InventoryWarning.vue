@@ -35,6 +35,7 @@ export default {
       allSpecNo: [],
       allGoodsName: [],
       allSpecName: [],
+      range: [-5, 5],
     };
   },
   computed: {
@@ -104,6 +105,13 @@ export default {
             :items="['SMARTBONES', '好适嘉', '齿能', 'Meatyway爵宴']" />
         </v-col>
         <v-col cols="12" md="4" sm="6">
+          <v-select v-model="searchQuery.groupType" clearable label="分类" :items="['A', 'B', 'C']" />
+        </v-col>
+        <v-col cols="12" md="4" sm="6">
+          <v-select v-model="searchQuery.waringLevel" clearable label="库存预警"
+            :items="[{ title: '红', value: 'red' }, { title: '黄', value: 'yellow' }, { title: '绿', value: 'green' }]" />
+        </v-col>
+        <v-col cols="12" md="4" sm="6">
           <v-autocomplete v-model="searchQuery.specNo" clearable label="商品编码" :items="allSpecNo" />
         </v-col>
         <v-col cols="12" md="4" sm="6">
@@ -112,18 +120,32 @@ export default {
         <v-col cols="12" md="4" sm="6">
           <v-autocomplete v-model="searchQuery.specName" clearable label="规格名称" :items="allSpecName" />
         </v-col>
-        <v-col cols="12" md="4" sm="6">
-          <v-text-field v-model="searchQuery.inventoryNum" label="库存数量" type="text" outlined dense></v-text-field>
+        <v-col cols="12">
+          <!-- <v-text-field v-model="searchQuery.inventoryNum" label="库存数量" type="text" outlined dense></v-text-field> -->
+          <v-range-slider v-model="range" :max="10" :min="-10" :step="1" label="库存数量" class="align-center" hide-details>
+            <template v-slot:prepend>
+              <v-text-field v-model="range[0]" density="compact" style="width: 70px" type="number" variant="outlined"
+                hide-details single-line></v-text-field>
+            </template>
+            <template v-slot:append>
+              <v-text-field v-model="range[1]" density="compact" style="width: 70px" type="number" variant="outlined"
+                hide-details single-line></v-text-field>
+            </template>
+          </v-range-slider>
         </v-col>
-        <v-col cols="12" md="4" sm="6">
-          <v-text-field v-model="searchQuery.turnoverDays" label="预计可周转天数" type="text" outlined dense></v-text-field>
-        </v-col>
-        <v-col cols="12" md="4" sm="6">
-          <v-select v-model="searchQuery.groupType" clearable label="分类" :items="['A', 'B', 'C']" />
-        </v-col>
-        <v-col cols="12" md="4" sm="6">
-          <v-select v-model="searchQuery.waringLevel" clearable label="库存预警"
-            :items="[{ title: '红', value: 'red' }, { title: '黄', value: 'yellow' }, { title: '绿', value: 'green' }]" />
+        <v-col cols="12">
+          <!-- <v-text-field v-model="searchQuery.turnoverDays" label="预计可周转天数" type="text" outlined dense></v-text-field> -->
+          <v-range-slider v-model="range" :max="10" :min="-10" :step="1" label="预计可周转天数" class="align-center"
+            hide-details>
+            <template v-slot:prepend>
+              <v-text-field v-model="range[0]" density="compact" style="width: 70px" type="number" variant="outlined"
+                hide-details single-line></v-text-field>
+            </template>
+            <template v-slot:append>
+              <v-text-field v-model="range[1]" density="compact" style="width: 70px" type="number" variant="outlined"
+                hide-details single-line></v-text-field>
+            </template>
+          </v-range-slider>
         </v-col>
         <v-col cols="12" md="4" sm="6">
           <v-btn type="submit" color="primary">搜索</v-btn>
