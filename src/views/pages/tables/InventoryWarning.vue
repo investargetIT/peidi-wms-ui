@@ -18,8 +18,8 @@ export default {
         specName: '',
         inventoryNum: '',
         turnoverDays: '',
-        groupType: '',
-        waringLevel: '',
+        groupType: null,
+        waringLevel: null,
       },
       headers: [
         { title: '品牌', value: 'brandName', sortable: true },
@@ -115,10 +115,11 @@ export default {
           <v-text-field v-model="searchQuery.turnoverDays" label="预计可周转天数" type="text" outlined dense></v-text-field>
         </v-col>
         <v-col cols="12" md="4" sm="6">
-          <v-text-field v-model="searchQuery.groupType" label="分类" type="text" outlined dense></v-text-field>
+          <v-select v-model="searchQuery.groupType" clearable label="分类" :items="['A', 'B', 'C']" />
         </v-col>
         <v-col cols="12" md="4" sm="6">
-          <v-text-field v-model="searchQuery.waringLevel" label="库存预警" type="text" outlined dense></v-text-field>
+          <v-select v-model="searchQuery.waringLevel" clearable label="库存预警"
+            :items="[{ title: '红', value: 'red' }, { title: '黄', value: 'yellow' }, { title: '绿', value: 'green' }]" />
         </v-col>
         <v-col cols="12" md="4" sm="6">
           <v-btn type="submit" color="primary">搜索</v-btn>
