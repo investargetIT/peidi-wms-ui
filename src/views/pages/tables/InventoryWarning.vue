@@ -35,7 +35,6 @@ export default {
       allSpecNo: [],
       allGoodsName: [],
       allSpecName: [],
-      range: [-5, 5],
     };
   },
   computed: {
@@ -84,14 +83,22 @@ export default {
           console.error("API调用错误：", error);
         });
     },
+    handleRestBtnClicked() {
+      this.searchQuery = {
+        brandName: null,
+        specNo: null,
+        goodsName: null,
+        specName: null,
+        inventoryNum: [0, 1000000],
+        turnoverDays: [0, 1000],
+        groupType: null,
+        waringLevel: null,
+      };
+      this.updateData();
+    },
   },
   mounted() {
-    // 当组件挂载后，更新数据
     this.updateData();
-    // 设置定时器模拟数据更新 (实际应用中应该避免使用setInterval)
-    // setInterval(() => {
-    //   this.updateData();
-    // }, 5000); // 每5秒更新一次数据
   },
 };
 </script>
@@ -147,7 +154,8 @@ export default {
           </v-range-slider>
         </v-col>
         <v-col cols="12" md="4" sm="6">
-          <v-btn type="submit" color="primary">搜索</v-btn>
+          <v-btn type="submit" color="primary" style="margin-right: 10px;">筛选</v-btn>
+          <v-btn color="secondary" @click="handleRestBtnClicked">重置</v-btn>
         </v-col>
       </v-row>
     </v-container>
