@@ -13,9 +13,9 @@ export default {
       ],
       searchQuery: {
         brandName: null,
-        specNo: '',
-        goodsName: '',
-        specName: '',
+        specNo: null,
+        goodsName: null,
+        specName: null,
         inventoryNum: '',
         turnoverDays: '',
         groupType: null,
@@ -31,9 +31,10 @@ export default {
         { title: '分类', value: 'groupType', sortable: true, minWidth: 80 },
         { title: '库存预警', value: 'waringLevel', sortable: true, minWidth: 100 },
       ],
-      items: [
-
-      ],
+      items: [],
+      allSpecNo: [],
+      allGoodsName: [],
+      allSpecName: [],
     };
   },
   computed: {
@@ -73,6 +74,9 @@ export default {
           const { code, data } = response.data;
           if (code == 200) {
             this.items = data;
+            this.allSpecNo = data.map(m => m.specNo);
+            this.allGoodsName = data.map(m => m.goodsName);
+            this.allSpecName = data.map(m => m.specName);
           }
         })
         .catch(error => {
@@ -100,13 +104,13 @@ export default {
             :items="['SMARTBONES', '好适嘉', '齿能', 'Meatyway爵宴']" />
         </v-col>
         <v-col cols="12" md="4" sm="6">
-          <v-text-field v-model="searchQuery.specNo" label="商品编码" type="text" outlined dense></v-text-field>
+          <v-autocomplete v-model="searchQuery.specNo" clearable label="商品编码" :items="allSpecNo" />
         </v-col>
         <v-col cols="12" md="4" sm="6">
-          <v-text-field v-model="searchQuery.goodsName" label="货品名称" type="text" outlined dense></v-text-field>
+          <v-autocomplete v-model="searchQuery.goodsName" clearable label="货品名称" :items="allGoodsName" />
         </v-col>
         <v-col cols="12" md="4" sm="6">
-          <v-text-field v-model="searchQuery.specName" label="规格名称" type="text" outlined dense></v-text-field>
+          <v-autocomplete v-model="searchQuery.specName" clearable label="规格名称" :items="allSpecName" />
         </v-col>
         <v-col cols="12" md="4" sm="6">
           <v-text-field v-model="searchQuery.inventoryNum" label="库存数量" type="text" outlined dense></v-text-field>
