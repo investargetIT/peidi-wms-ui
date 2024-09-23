@@ -5,6 +5,7 @@ import VxeTable from 'vxe-table';
 import 'vxe-table/lib/style.css';
 
 // Styles
+import '@/assets/styles/styles.scss';
 import '@core/scss/template/index.scss';
 import '@layouts/styles/index.scss';
 

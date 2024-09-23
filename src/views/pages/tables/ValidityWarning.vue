@@ -137,12 +137,12 @@ export default {
           <v-range-slider v-model="searchQuery.waring1Num" :max="1000000" :min="0" :step="1" label="1/3效期"
             class="align-center" hide-details>
             <template v-slot:prepend>
-              <v-text-field v-model="searchQuery.waring1Num[0]" density="compact" style="width: 120px" type="number"
-                variant="outlined" hide-details single-line></v-text-field>
+              <v-text-field v-model="searchQuery.waring1Num[0]" style="width: 120px" type="number" variant="outlined"
+                hide-details single-line></v-text-field>
             </template>
             <template v-slot:append>
-              <v-text-field v-model="searchQuery.waring1Num[1]" density="compact" style="width: 120px" type="number"
-                variant="outlined" hide-details single-line></v-text-field>
+              <v-text-field v-model="searchQuery.waring1Num[1]" style="width: 120px" type="number" variant="outlined"
+                hide-details single-line></v-text-field>
             </template>
           </v-range-slider>
         </v-col>
@@ -150,12 +150,12 @@ export default {
           <v-range-slider v-model="searchQuery.waring2Num" :max="100000" :min="0" :step="1" label="2/3效期"
             class="align-center" hide-details>
             <template v-slot:prepend>
-              <v-text-field v-model="searchQuery.waring2Num[0]" density="compact" style="width: 120px" type="number"
-                variant="outlined" hide-details single-line></v-text-field>
+              <v-text-field v-model="searchQuery.waring2Num[0]" style="width: 120px" type="number" variant="outlined"
+                hide-details single-line></v-text-field>
             </template>
             <template v-slot:append>
-              <v-text-field v-model="searchQuery.waring2Num[1]" density="compact" style="width: 120px" type="number"
-                variant="outlined" hide-details single-line></v-text-field>
+              <v-text-field v-model="searchQuery.waring2Num[1]" style="width: 120px" type="number" variant="outlined"
+                hide-details single-line></v-text-field>
             </template>
           </v-range-slider>
         </v-col>
@@ -163,12 +163,12 @@ export default {
           <v-range-slider v-model="searchQuery.waring3Num" :max="100000" :min="0" :step="1" label="临期"
             class="align-center" hide-details>
             <template v-slot:prepend>
-              <v-text-field v-model="searchQuery.waring3Num[0]" density="compact" style="width: 120px" type="number"
-                variant="outlined" hide-details single-line></v-text-field>
+              <v-text-field v-model="searchQuery.waring3Num[0]" style="width: 120px" type="number" variant="outlined"
+                hide-details single-line></v-text-field>
             </template>
             <template v-slot:append>
-              <v-text-field v-model="searchQuery.waring3Num[1]" density="compact" style="width: 120px" type="number"
-                variant="outlined" hide-details single-line></v-text-field>
+              <v-text-field v-model="searchQuery.waring3Num[1]" style="width: 120px" type="number" variant="outlined"
+                hide-details single-line></v-text-field>
             </template>
           </v-range-slider>
         </v-col>
@@ -176,17 +176,17 @@ export default {
           <v-range-slider v-model="searchQuery.inventoryNum" :max="1000000" :min="0" :step="1" label="库存数量"
             class="align-center" hide-details>
             <template v-slot:prepend>
-              <v-text-field v-model="searchQuery.inventoryNum[0]" density="compact" style="width: 120px" type="number"
-                variant="outlined" hide-details single-line></v-text-field>
+              <v-text-field v-model="searchQuery.inventoryNum[0]" style="width: 120px" type="number" variant="outlined"
+                hide-details single-line></v-text-field>
             </template>
             <template v-slot:append>
-              <v-text-field v-model="searchQuery.inventoryNum[1]" density="compact" style="width: 120px" type="number"
-                variant="outlined" hide-details single-line></v-text-field>
+              <v-text-field v-model="searchQuery.inventoryNum[1]" style="width: 120px" type="number" variant="outlined"
+                hide-details single-line></v-text-field>
             </template>
           </v-range-slider> </v-col>
         <v-col cols="12" md="4" sm="6">
-          <v-btn type="submit" color="primary" style="margin-right: 10px;">搜索</v-btn>
-          <v-btn color="secondary" @click="handleRestBtnClicked">重置</v-btn>
+          <v-btn size="small" type="submit" color="primary" style="margin-right: 10px;">搜索</v-btn>
+          <v-btn size="small" color="secondary" @click="handleRestBtnClicked">重置</v-btn>
         </v-col>
       </v-row>
     </v-container>
