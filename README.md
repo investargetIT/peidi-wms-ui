@@ -16,6 +16,10 @@ cp .env.example .env
 ```
 docker exec peidi-wms-ui pnpm run build
 ```
+5. 发布到服务器
+```
+scp -r dist/* root@IP_ADDRESS:/media/www/wms
+```
 # 安装依赖
 1.进入容器
 ```
