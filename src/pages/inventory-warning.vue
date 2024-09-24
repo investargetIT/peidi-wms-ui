@@ -5,9 +5,9 @@ import InventoryWarning from '@/views/pages/tables/InventoryWarning.vue';
 <template>
   <VRow>
     <VCol cols="12">
-      <VCard title="库存预警">
-        <InventoryWarning />
-      </VCard>
+      <!-- <VCard title="库存预警"> -->
+      <InventoryWarning />
+      <!-- </VCard> -->
     </VCol>
   </VRow>
 </template>
