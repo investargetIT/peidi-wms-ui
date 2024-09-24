@@ -108,7 +108,7 @@ export default {
     <v-expansion-panel title="库存预警">
       <v-expansion-panel-text>
         <v-form @submit.prevent="onSearch">
-          <v-container>
+          <v-container fluid>
             <v-row>
               <v-col cols="12" md="4" sm="6">
                 <v-select v-model="searchQuery.brandName" clearable label="品牌"
