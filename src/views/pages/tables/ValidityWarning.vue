@@ -28,8 +28,8 @@ export default {
         { title: '商品编码', value: 'specNo', sortable: false },
         { title: '货品名称', value: 'goodsName', sortable: false },
         { title: '规格名称', value: 'specName', sortable: false },
-        { title: '分类', value: 'groupType', sortable: true, minWidth: 100 },
-        { title: '1/3效期', value: 'waring1Num', sortable: true, minWidth: 100 },
+        { title: '分类', value: 'groupType', sortable: true, minWidth: 60 },
+        { title: '1/3效期', value: 'waring1Num', sortable: true, minWidth: 80 },
         { title: '2/3效期', value: 'waring2Num', sortable: true, minWidth: 80 },
         { title: '临期', value: 'waring3Num', sortable: true, minWidth: 100 },
         { title: '库存数量', value: 'inventoryNum', sortable: true, minWidth: 100 },
@@ -197,15 +197,32 @@ export default {
       </v-expansion-panel-text>
     </v-expansion-panel>
   </v-expansion-panels>
-  <v-card>
-    <v-data-table :headers="headers" :items="items" :items-per-page="-1" :hide-default-footer="true">
-    </v-data-table>
-  </v-card>
+  <div class="sticky-header">
+    <v-card>
+      <v-data-table :headers="headers" :items="items" :items-per-page="-1" :hide-default-footer="true">
+      </v-data-table>
+    </v-card>
+  </div>
 </template>
 
 <style lang="scss">
 .blue-header {
   color: blue;
   font-weight: bold;
+}
+
+.sticky-header {
+
+  .v-table__wrapper,
+  .v-card {
+    overflow: unset !important;
+  }
+
+  thead {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+  }
 }
 </style>

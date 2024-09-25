@@ -166,13 +166,15 @@ export default {
       </v-expansion-panel-text>
     </v-expansion-panel>
   </v-expansion-panels>
-  <v-card>
-    <v-data-table :headers="headers" :items="items" :items-per-page="-1" :hide-default-footer="true">
-      <template v-slot:item.waringLevel="{ item }">
-        <span class="circle" :style="{ 'background': item.waringLevel }"></span>
-      </template>
-    </v-data-table>
-  </v-card>
+  <div class="sticky-header">
+    <v-card>
+      <v-data-table :headers="headers" :items="items" :items-per-page="-1" :hide-default-footer="true">
+        <template v-slot:item.waringLevel="{ item }">
+          <span class="circle" :style="{ 'background': item.waringLevel }"></span>
+        </template>
+      </v-data-table>
+    </v-card>
+  </div>
 </template>
 
 <style lang="scss">
@@ -186,5 +188,20 @@ export default {
 .blue-header {
   color: blue;
   font-weight: bold;
+}
+
+.sticky-header {
+
+  .v-table__wrapper,
+  .v-card {
+    overflow: unset !important;
+  }
+
+  thead {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+  }
 }
 </style>
