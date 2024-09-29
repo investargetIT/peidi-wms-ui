@@ -191,7 +191,7 @@ export default {
                   </template>
                 </v-range-slider>
               </v-col>
-              <v-col cols="12" md="2" sm="6">
+              <v-col cols="12">
                 <v-btn size="small" type="submit" color="primary" style="margin-right: 10px;">筛选</v-btn>
                 <v-btn size="small" color="secondary" style="margin-right: 10px;"
                   @click="handleResetBtnClicked">重置</v-btn>
