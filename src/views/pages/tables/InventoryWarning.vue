@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import * as XLSX from 'xlsx';
 const BASE_URL = import.meta.env.VITE_API_ENDPOINT;
 
 export default {
@@ -96,6 +97,40 @@ export default {
       };
       this.updateData();
     },
+    exportToExcel() {
+      const headers = [
+        { title: '品牌', key: 'brandName' },
+        { title: '商品编码', key: 'specNo' },
+        { title: '货品名称', key: 'goodsName' },
+        { title: '规格名称', key: 'specName' },
+        { title: '库存数量', key: 'inventoryNum' },
+        { title: '预计可周转天数', key: 'turnoverDays' },
+        { title: '分类', key: 'groupType' },
+        { title: '库存预警', key: 'waringLevel' },
+      ];
+
+      const data = this.items.map(item => ({
+        brandName: item.brandName,
+        specNo: item.specNo,
+        goodsName: item.goodsName,
+        specName: item.specName,
+        inventoryNum: item.inventoryNum,
+        turnoverDays: item.turnoverDays,
+        groupType: item.groupType,
+        waringLevel: item.waringLevel,
+      }));
+
+      // 创建工作表
+      const worksheet = XLSX.utils.json_to_sheet(data, { header: headers.map(h => h.key) });
+
+      // 设置中文表头
+      const sheetHeaders = headers.map(h => h.title);
+      XLSX.utils.sheet_add_aoa(worksheet, [sheetHeaders], { origin: 'A1' });
+
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, '库存数据');
+      XLSX.writeFile(workbook, '库存预警.xlsx');
+    },
   },
   mounted() {
     this.updateData();
@@ -156,10 +191,19 @@ export default {
                   </template>
                 </v-range-slider>
               </v-col>
-              <v-col cols="12" md="4" sm="6">
+              <v-col cols="12" md="2" sm="6">
                 <v-btn size="small" type="submit" color="primary" style="margin-right: 10px;">筛选</v-btn>
                 <v-btn size="small" color="secondary" @click="handleRestBtnClicked">重置</v-btn>
               </v-col>
+              <vxe-grid ref="xGrid2" v-bind="gridOptions2">
+                <template #toolbar>
+                  <vxe-toolbar>
+                    <template #buttons>
+                      <vxe-button @click="exportToExcel">数据导出</vxe-button>
+                    </template>
+                  </vxe-toolbar>
+                </template>
+              </vxe-grid>
             </v-row>
           </v-container>
         </v-form>
@@ -203,5 +247,14 @@ export default {
     background-color: white;
     z-index: 1;
   }
+}
+
+.border--default {
+  display: none;
+}
+
+.vxe-button {
+  background-color: rgb(var(--v-theme-primary)) !important;
+  color: rgb(var(--v-theme-on-primary)) !important;
 }
 </style>
