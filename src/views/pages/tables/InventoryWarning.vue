@@ -84,7 +84,7 @@ export default {
           console.error("API调用错误：", error);
         });
     },
-    handleRestBtnClicked() {
+    handleResetBtnClicked() {
       this.searchQuery = {
         brandName: null,
         specNo: null,
@@ -193,17 +193,10 @@ export default {
               </v-col>
               <v-col cols="12" md="2" sm="6">
                 <v-btn size="small" type="submit" color="primary" style="margin-right: 10px;">筛选</v-btn>
-                <v-btn size="small" color="secondary" @click="handleRestBtnClicked">重置</v-btn>
+                <v-btn size="small" color="secondary" style="margin-right: 10px;"
+                  @click="handleResetBtnClicked">重置</v-btn>
+                <v-btn size="small" color="secondary" @click="exportToExcel">导出</v-btn>
               </v-col>
-              <vxe-grid ref="xGrid2" v-bind="gridOptions2">
-                <template #toolbar>
-                  <vxe-toolbar>
-                    <template #buttons>
-                      <vxe-button @click="exportToExcel">数据导出</vxe-button>
-                    </template>
-                  </vxe-toolbar>
-                </template>
-              </vxe-grid>
             </v-row>
           </v-container>
         </v-form>
@@ -247,14 +240,5 @@ export default {
     background-color: white;
     z-index: 1;
   }
-}
-
-.border--default {
-  display: none;
-}
-
-.vxe-button {
-  background-color: rgb(var(--v-theme-primary)) !important;
-  color: rgb(var(--v-theme-on-primary)) !important;
 }
 </style>
