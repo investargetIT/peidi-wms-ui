@@ -207,7 +207,8 @@ export default {
     <v-card>
       <v-data-table :headers="headers" :items="items" :items-per-page="-1" :hide-default-footer="true">
         <template v-slot:item.waringLevel="{ item }">
-          <span class="circle" :style="{ 'background': item.waringLevel }"></span>
+          <span class="circle"
+            :style="{ 'background': ['red', 'green', 'yellow'].includes(item.waringLevel) ? item.waringLevel : undefined }"></span>
         </template>
       </v-data-table>
     </v-card>
