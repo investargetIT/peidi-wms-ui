@@ -9,7 +9,11 @@ export default {
         };
     },
     mounted() {
-        axios.get(BASE_URL + '/inventory/turnoverCoefficient')
+        axios.get(BASE_URL + '/inventory/turnoverCoefficient', {
+            headers: {
+                authorization: localStorage.getItem('authToken')
+            }
+        })
             .then(response => {
                 const { code, data } = response.data;
                 if (code == 200) {
@@ -27,7 +31,11 @@ export default {
         handleEditClosed() {
             // 编辑关闭事件的处理逻辑
             const url = BASE_URL + '/inventory/turnoverCoefficient';
-            axios.post(url, this.tableData)
+            axios.post(url, this.tableData, {
+                headers: {
+                    authorization: localStorage.getItem('authToken')
+                }
+            })
                 .then(response => {
                     // 处理响应数据
                     console.log(response.data);

@@ -35,7 +35,11 @@ export default {
     };
   },
   mounted() {
-    axios.get(BASE_URL + '/inventory/config')
+    axios.get(BASE_URL + '/inventory/config', {
+      headers: {
+        authorization: localStorage.getItem('authToken')
+      }
+    })
       .then(response => {
         const { code, data } = response.data;
         if (code == 200) {
@@ -51,7 +55,11 @@ export default {
       item.value.push(newTag);
     },
     save() {
-      axios.post(BASE_URL + '/inventory/config', this.configs)
+      axios.post(BASE_URL + '/inventory/config', this.configs, {
+        headers: {
+          authorization: localStorage.getItem('authToken')
+        }
+      })
         .then(response => {
           console.log(response.data);
           this.text = '保存成功';
@@ -67,13 +75,15 @@ export default {
 <style src="vue-multiselect/dist/vue-multiselect.css"></style>
 <style scoped>
 .container {
-  min-height: 500px;
-  padding: 0 1.25rem;
-  margin: 0 auto;
   font-family: Arial, sans-serif;
+  margin-block: 0;
+  margin-inline: auto;
+  min-block-size: 500px;
+  padding-block: 0;
+  padding-inline: 1.25rem;
 }
 
 .item {
-  margin-bottom: 20px;
+  margin-block-end: 20px;
 }
 </style>

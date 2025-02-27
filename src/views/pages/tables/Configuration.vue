@@ -11,7 +11,11 @@ export default {
   },
   mounted() {
     console.log('base url', BASE_URL);
-    axios.get(BASE_URL + '/inventory/inventory-waring')
+    axios.get(BASE_URL + '/inventory/inventory-waring', {
+      headers: {
+        authorization: localStorage.getItem('authToken')
+      }
+    })
       .then(response => {
         // 成功时的处理逻辑
         this.desserts = response.data;
@@ -91,7 +95,7 @@ export default {
 <style lang="scss">
 .circle {
   border-radius: 50%;
-  height: 20px;
-  width: 20px;
+  block-size: 20px;
+  inline-size: 20px;
 }
 </style>

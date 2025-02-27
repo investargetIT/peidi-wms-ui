@@ -9,7 +9,11 @@ export default {
     };
   },
   mounted() {
-    axios.get(this.api+'inventory/inventory-waring')
+    axios.get(this.api+'inventory/inventory-waring',{
+      headers : {
+        authorization : localStorage.getItem('authToken')
+      }
+    })
       .then(response => {
         // 成功时的处理逻辑
         this.inventorywarning = response.data;

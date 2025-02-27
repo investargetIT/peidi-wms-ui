@@ -1,5 +1,11 @@
 <script setup>
-import UpgradeToPro from '@/components/UpgradeToPro.vue'
+import { useRouter } from 'vue-router';
+const router = useRouter();
+if (localStorage.getItem('authToken')) {
+
+} else {
+  router.push('/login')
+}
 </script>
 
 <template>

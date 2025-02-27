@@ -70,7 +70,11 @@ export default {
         });
     },
     updateData() {
-      axios.get(BASE_URL + '/inventory/inventory-waring?sortStr=' + encodeURIComponent(JSON.stringify(this.defaultSort)))
+      axios.get(BASE_URL + '/inventory/inventory-waring?sortStr=' + encodeURIComponent(JSON.stringify(this.defaultSort)), {
+        headers: {
+          authorization: localStorage.getItem('authToken')
+        }
+      })
         .then(response => {
           const { code, data } = response.data;
           if (code == 200) {
@@ -139,7 +143,7 @@ export default {
 </script>
 
 <template>
-  <v-expansion-panels style="margin-bottom: 20px;">
+  <v-expansion-panels style="margin-block-end: 20px;">
     <v-expansion-panel title="库存预警">
       <v-expansion-panel-text>
         <v-form @submit.prevent="onSearch">
@@ -169,11 +173,11 @@ export default {
                 <v-range-slider v-model="searchQuery.inventoryNum" :max="1000000" :min="0" :step="1" label="库存数量"
                   class="align-center" hide-details>
                   <template v-slot:prepend>
-                    <v-text-field v-model="searchQuery.inventoryNum[0]" style="width: 120px" type="number"
+                    <v-text-field v-model="searchQuery.inventoryNum[0]" style="inline-size: 120px;" type="number"
                       variant="outlined" hide-details single-line></v-text-field>
                   </template>
                   <template v-slot:append>
-                    <v-text-field v-model="searchQuery.inventoryNum[1]" style="width: 120px" type="number"
+                    <v-text-field v-model="searchQuery.inventoryNum[1]" style="inline-size: 120px;" type="number"
                       variant="outlined" hide-details single-line></v-text-field>
                   </template>
                 </v-range-slider>
@@ -182,18 +186,18 @@ export default {
                 <v-range-slider v-model="searchQuery.turnoverDays" :max="1000" :min="0" :step="1" label="预计可周转天数"
                   class="align-center" hide-details>
                   <template v-slot:prepend>
-                    <v-text-field v-model="searchQuery.turnoverDays[0]" style="width: 120px" type="number"
+                    <v-text-field v-model="searchQuery.turnoverDays[0]" style="inline-size: 120px;" type="number"
                       variant="outlined" hide-details single-line></v-text-field>
                   </template>
                   <template v-slot:append>
-                    <v-text-field v-model="searchQuery.turnoverDays[1]" style="width: 120px" type="number"
+                    <v-text-field v-model="searchQuery.turnoverDays[1]" style="inline-size: 120px;" type="number"
                       variant="outlined" hide-details single-line></v-text-field>
                   </template>
                 </v-range-slider>
               </v-col>
               <v-col cols="12">
-                <v-btn size="small" type="submit" color="primary" style="margin-right: 10px;">筛选</v-btn>
-                <v-btn size="small" color="secondary" style="margin-right: 10px;"
+                <v-btn size="small" type="submit" color="primary" style="margin-inline-end: 10px;">筛选</v-btn>
+                <v-btn size="small" color="secondary" style="margin-inline-end: 10px;"
                   @click="handleResetBtnClicked">重置</v-btn>
                 <v-btn size="small" color="secondary" @click="exportToExcel">导出</v-btn>
               </v-col>
@@ -219,8 +223,8 @@ export default {
 .circle {
   display: block;
   border-radius: 50%;
-  height: 20px;
-  width: 20px;
+  block-size: 20px;
+  inline-size: 20px;
 }
 
 .blue-header {
@@ -237,9 +241,9 @@ export default {
 
   thead {
     position: sticky;
-    top: 0;
-    background-color: white;
     z-index: 1;
+    background-color: white;
+    inset-block-start: 0;
   }
 }
 </style>
